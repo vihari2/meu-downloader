@@ -13,38 +13,36 @@ form.onsubmit = async (e) => {
   submitBtn.disabled = true;
 
   try {
-    // 1. Tenta fazer a requisição
-    const response = await fetch("http://localhost:5000/download", {
+    const response = await fetch("http://127.0.0.1:5000/download", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ url: url }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ url: url }), 
     });
 
     if (response.ok) {
-      const blob = await response.blob(); 
-      
+      const blob = await response.blob();
+
       const downloadUrl = window.URL.createObjectURL(blob);
-      
+
       const link = document.createElement("a");
       link.href = downloadUrl;
-      link.download = "video_instagram.mp4"; 
+      link.download = "video_instagram.mp4";
       document.body.appendChild(link);
       link.click();
-      
-      
+
       window.URL.revokeObjectURL(downloadUrl);
       link.remove();
     } else {
-      
       const errorData = await response.json();
       alert("Erro no servidor: " + errorData.error);
     }
-
   } catch (err) {
     console.error("Erro detalhado:", err);
     alert("Erro de conexão ou processamento.");
   }
-}; 
+};
 
 pasteBtn.onclick = async () => {
   try {

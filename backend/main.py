@@ -2,9 +2,10 @@ from flask import Flask, request, jsonify, Response
 from flask_cors import CORS
 import yt_dlp
 import requests
+import os
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/*": {"origins": "*"}})
 
 @app.route('/download', methods=['POST'])
 def get_video_link():
@@ -36,4 +37,5 @@ def get_video_link():
         return jsonify({"error": "Erro ao processar vídeo: " + str(e)}), 500
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
