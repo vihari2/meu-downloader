@@ -5,7 +5,7 @@ import requests
 import os
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "*"}})
+CORS(app, resources={r"/*": {"origins": "https://vihari2.github.io"}})
 
 @app.route('/download', methods=['POST'])
 def get_video_link():
