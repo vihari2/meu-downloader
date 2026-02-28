@@ -10,12 +10,12 @@ Permitir que o usuário cole o link de um vídeo do Instagram, clique em um bot�
 ## 🛠️ Tecnologias e Estrutura
 O projeto utiliza uma arquitetura **Frontend + Backend (API)** para contornar as restrições de segurança do Instagram.
 
-### 🌐 Frontend (Interface)
+### 🌐 Frontend
 - **HTML5 / CSS3 / JavaScript**
 - Interface responsiva (funciona em qualquer tela).
 - Captura a URL do vídeo e faz a chamada para o servidor.
 
-### ⚙️ Backend (O Motor)
+### ⚙️ Backend
 - **Python (Flask)** 
 - **Biblioteca:** `yt-dlp`
 
