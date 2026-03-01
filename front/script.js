@@ -34,6 +34,7 @@ form.onsubmit = async (e) => {
 
       window.URL.revokeObjectURL(downloadUrl);
       link.remove();
+      input.value = "";
     } else {
       const errorData = await response.json();
       alert("Erro no servidor: " + errorData.error);
@@ -41,6 +42,9 @@ form.onsubmit = async (e) => {
   } catch (err) {
     console.error("Erro detalhado:", err);
     alert("Erro de conexão ou processamento.");
+  } finally {
+    submitBtn.innerText = "Baixar Video";
+    submitBtn.disabled = false;
   }
 };
 
