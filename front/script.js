@@ -43,6 +43,7 @@ form.onsubmit = async (e) => {
     console.error("Erro detalhado:", err);
     alert("Erro de conexão ou processamento.");
   } finally {
+    console.log("O finally rodou! Resetando botão...");
     submitBtn.innerText = "Baixar Video";
     submitBtn.disabled = false;
   }
